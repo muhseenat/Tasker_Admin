@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
 import styles from "../styles/Home.module.css";
-// import Image from "../../images/watermark.png";
+import adminProfile from '../images/images.png';
 const Navbar = () => {
     return (
 		<div className={styles.headcontainer}>
@@ -12,7 +13,7 @@ const Navbar = () => {
 					<p>welcome to the board.</p>
 				</div>
 				<div className={styles.profile}>
-					<img src='' alt="profile" className={styles.image} />
+					<Image src={adminProfile} width="40px" height="40px"  alt="profile" className={styles.image}  />
 				</div>
 			</div>
 		</div>

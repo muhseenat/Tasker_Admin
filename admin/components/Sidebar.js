@@ -14,7 +14,7 @@ const Sidebar = () => {
     return (
 		<div className={styles.navcontainer}>
 			<div className={styles.logo}>
-				<h2>Streamline</h2>
+				<h2>Tasker</h2>
 			</div>
 			<div className={styles.wrapper}>
 				<ul>
@@ -30,29 +30,29 @@ const Sidebar = () => {
 							icon={faRocket}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
-						<a href="#">Explore</a>
+						<a href="#">Category</a>
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faBookOpen}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
-						<a href="#">Library</a>
+						<a href="#">Job Providers</a>
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faHeart}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
-						<a href="#">Favourite</a>
+						<a href="#">Taskers</a>
 					</li>
-					<li>
+					{/* <li>
 						<FontAwesomeIcon
 							icon={faCog}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
 						<a href="#"> Settings</a>
-					</li>
+					</li> */}
 					<li>
 						<FontAwesomeIcon
 							icon={faSignOutAlt}

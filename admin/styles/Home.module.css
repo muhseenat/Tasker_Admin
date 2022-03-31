@@ -2,8 +2,9 @@
   position: fixed;
   width:200px;
   height:100%;
-  background-color: #fff;
-  box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75);
+  background-color:  rgb(9, 112, 72);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  /* box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75); */
 
 }
 
@@ -37,7 +38,7 @@
   opacity: .6;
 }
 .wrapper>ul>li:active{
-  color: #000;
+  color:  #4b6cb7;
 }
 
 .wrapper>ul>li>a:hover{
@@ -55,7 +56,7 @@
   opacity: 0;
 }
 .logo{
-  /* background: url('../public/logo.png'); tasker logo*/
+  background: url('../public/admin.png'); 
   width: 40px;
   height: 40px;
   padding:10px;
@@ -80,7 +81,7 @@ color:red;
   display: flex;
   flex-wrap: wrap;
   height:70px;
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   margin-left:200px;
   /* z-index: -1; */
  
@@ -101,7 +102,7 @@ color:red;
   color: rgb(0, 0, 0);;
 }
 .title>h2>span{
-  color:rgb(9, 112, 72);
+  color: rgb(0, 0, 0);
 }
 .profile{
   position: absolute;

@@ -19,8 +19,9 @@ const dashboard = () => {
 if(token){
  return (
     <div>
-     <Navbar/>
      <Sidebar/>
+     <Navbar/>
+
 
     <style jsx>
         {
