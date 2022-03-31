@@ -1,5 +1,7 @@
 import {useEffect} from 'react'
 import { useRouter } from 'next/router';
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 const dashboard = () => {
 
     const router=useRouter();
@@ -7,7 +9,7 @@ const dashboard = () => {
     // const token = localStorage.getItem('adminToken');
     // console.log(token);
     console.log('tokennnn');
-    const token=false;
+    const token=true;
     if(!token){
     router.push({
       pathname:'/login'
@@ -17,8 +19,8 @@ const dashboard = () => {
 if(token){
  return (
     <div>
-     
-     <h4>WELCOME TO DASHBOARD</h4>
+     <Navbar/>
+     <Sidebar/>
 
     <style jsx>
         {
