@@ -69,7 +69,7 @@ const Sidebar = () => {
 					`
 					
 a {
-	color: inherit;
+	color: #FFFEFD;
 	text-decoration: none;
   }`
 				}

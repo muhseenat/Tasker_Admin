@@ -38,7 +38,7 @@
   opacity: .6;
 }
 .wrapper>ul>li:active{
-  color:  #4b6cb7;
+  color:  white;
 }
 
 .wrapper>ul>li>a:hover{
