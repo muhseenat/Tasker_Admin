@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import { useRouter } from 'next/router';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
+import Content from '../components/Content';
 const dashboard = () => {
 
     const router=useRouter();
@@ -19,9 +20,9 @@ const dashboard = () => {
 if(token){
  return (
     <div>
-     <Sidebar/>
-     <Navbar/>
-
+     {/* <Sidebar/>
+     <Navbar/> */}
+     <Content/>
 
     <style jsx>
         {

@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link';
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,14 +24,15 @@ const Sidebar = () => {
 							icon={faTachometerAlt}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
-						<a href="#">Dashboard</a>
+						<Link href='/'><a>Dashboard</a></Link>
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faRocket}
 							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
-						<a href="#">Category</a>
+		            <Link href='/category'><a>Category</a></Link>
+
 					</li>
 					<li>
 						<FontAwesomeIcon
@@ -62,7 +64,18 @@ const Sidebar = () => {
 					</li>
 				</ul>
 			</div>
+			<style jsx>
+				{
+					`
+					
+a {
+	color: inherit;
+	text-decoration: none;
+  }`
+				}
+			</style>
 		</div>
+
 	);
 }
 
