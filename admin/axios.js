@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const serverApi =axios.create({
-    baseURL:"http://localhost:5050/api/admin"
+    baseURL:"https://tasker-01.herokuapp.com/api/admin"
 })
    
 export default serverApi;
