@@ -2,20 +2,25 @@ import Head from 'next/head'
 import styles from '../styles/Login.module.css'
 import { useState,useEffect } from 'react'
 import {useRouter} from  'next/router'
+import { useSelector } from 'react-redux'
 import axios from '../axios'
 
 export default function Home() {
+  
+  const admin=useSelector(state=>state.admin.adminData)
+  const router = useRouter();
+  
+ if(admin){
+   router.push('/')
+ }
+
+
+
 
   const [email,setEmail] = useState("");
   const [password,setPassword] =useState("");
   const [error,setError] = useState("");
-  const router = useRouter();
 
-  // const token =localStorage.getItem('adminToken');
-  // if(token){
-  //   router.push('/')
-  //   return false;
-  // }
 
 
 
@@ -25,7 +30,7 @@ export default function Home() {
     try {
       const res= await axios.post('/login',data)
       if(res){
-        localStorage.setItem('adminToken',res.data)
+        localStorage.setItem('admin',JSON.stringify(res.data))
         router.push('/');
       }
     } catch (error) {

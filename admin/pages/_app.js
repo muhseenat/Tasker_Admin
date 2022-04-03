@@ -2,19 +2,20 @@ import '../styles/globals.css'
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {useSelector} from 'react-redux';
+import {wrapper} from '../store'
 
 function MyApp({ Component, pageProps }) {
 
-  const user=true;
+  const admin = useSelector(state=>state.admin.adminData)
+  
   return (
     <>
- {user&&<Sidebar/>}
- {user&&<Navbar/>}
-
+ {admin&&<Sidebar/>}
+ {admin&&<Navbar/>}
   <Component {...pageProps} />
   </>
   )
 }
 
-export default MyApp
+export default  wrapper.withRedux(MyApp);

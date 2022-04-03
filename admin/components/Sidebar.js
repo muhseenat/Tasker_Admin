@@ -48,13 +48,7 @@ const Sidebar = () => {
 						/>{" "}
 						<a href="#">Taskers</a>
 					</li>
-					{/* <li>
-						<FontAwesomeIcon
-							icon={faCog}
-							style={{ width: "18px", cursor: "pointer" }}
-						/>{" "}
-						<a href="#"> Settings</a>
-					</li> */}
+					
 					<li>
 						<FontAwesomeIcon
 							icon={faSignOutAlt}

@@ -3,25 +3,26 @@ import { useRouter } from 'next/router';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import Content from '../components/Content';
+import { useSelector } from 'react-redux';
+
+
 const dashboard = () => {
-
+  const admin= useSelector(state=>state.admin.adminData)
+console.log(admin);
     const router=useRouter();
-
-    // const token = localStorage.getItem('adminToken');
-    // console.log(token);
-    console.log('tokennnn');
-    const token=true;
-    if(!token){
+useEffect(()=>{
+  if(!admin){
     router.push({
       pathname:'/login'
     })
     return false;
     }
-if(token){
+},[])
+   
+
  return (
     <div>
-     {/* <Sidebar/>
-     <Navbar/> */}
+    
      <Content/>
 
     <style jsx>
@@ -39,7 +40,7 @@ if(token){
 
   
     </div>
-  )}
+  )
 }
 
 
