@@ -11,8 +11,11 @@ function MyApp({ Component, pageProps }) {
   
   return (
     <>
- {admin&&<Sidebar/>}
- {admin&&<Navbar/>}
+    {/* //issue is here because these don't follow order */}
+ {/* {admin&&<Sidebar/>}
+ {admin&&<Navbar/>} */}
+ <Sidebar/>
+ <Navbar/>
   <Component {...pageProps} />
   </>
   )
