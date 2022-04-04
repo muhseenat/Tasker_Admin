@@ -10,11 +10,8 @@ const Navbar = () => {
 					<h2>
 						Hello, <span>Admin</span>
 					</h2>
-					<p>welcome to the board.</p>
 				</div>
-				<div className={styles.profile}>
-					<Image src={adminProfile} width="40px" height="40px"  alt="profile" className={styles.image}  />
-				</div>
+			
 			</div>
 		</div>
 	);

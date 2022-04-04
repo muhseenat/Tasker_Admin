@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import styles from "../styles/Home.module.css";
 import axios from '../axios'
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 const category = () => {
 
-    const [allCategory,setAllCategory]= useState([]);
+    const [allCategory, setAllCategory] = useState([]);
     const [category, setCategory] = useState("")
 
-  useEffect(()=>{
-     axios.get('/get/category').then((resp)=>{
-         console.log(resp);
-         setAllCategory(resp?.data)
-     }).catch(err=>{console.log(err)})
-  },[])
+    useEffect(() => {
+        axios.get('/get/category').then((resp) => {
+            console.log(resp);
+            // setAllCategory(resp?.data)
+        }).catch(err => { console.log(err) })
+    }, [])
     const addCategory = () => {
-        axios.post('/add/category',category)
+        axios.post('/add/category', category)
             .then((resp) => {
                 console.log(resp);
             }).catch(err => console.log(err))
@@ -21,6 +23,9 @@ const category = () => {
     console.log(allCategory);
 
     return (
+        <>
+        <Sidebar/>
+        <Navbar/>
         <div className={styles.contentcontainer}>
             <div className='container'>
                 <h3 className='text-center mt-5'>Add Category</h3>
@@ -33,7 +38,7 @@ const category = () => {
                             </span>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
+                    {/* <div class="row justify-content-center">
                         <div class="col-auto">
                             <table class="table w- ">
                                 <thead class="thead-light">
@@ -42,22 +47,22 @@ const category = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {allCategory.map((catg,index)=>(
-                                    
+                                    {allCategory.map((catg, index) => (
+
                                         <tr>
-                                        <th scope="row">{index}</th>
-                                        <td>{catg}</td>
-                                    </tr>
+                                            <th scope="row">{index}</th>
+                                            <td>{catg}</td>
+                                        </tr>
                                     ))}
                                 </tbody>
                             </table>
-                        </div></div>
+                        </div></div> */}
                 </div>
             </div>
 
             {/* //category delete section   */}
         </div>
-
+        </>
     )
 }
 

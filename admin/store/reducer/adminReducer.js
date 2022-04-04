@@ -2,8 +2,8 @@ import ACTION_CONSTANTS from '../actions/actionTypes'
 
 
 const initialState = {
-    adminData:JSON.parse(typeof window!=='undefined'&& localStorage.getItem("admin")),
-    test:null
+    adminData:JSON.parse(typeof window!=='undefined'&& localStorage.getItem("admin"))
+
   }
   
 const adminDetails = (state = initialState, action)=>{

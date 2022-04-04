@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
@@ -7,27 +7,27 @@ import { useSelector } from 'react-redux';
 
 
 const dashboard = () => {
-  const admin= useSelector(state=>state.admin.adminData)
-console.log(admin);
-    const router=useRouter();
-useEffect(()=>{
-  if(!admin){
-    router.push({
-      pathname:'/login'
+  // const admin = useSelector(state => state.admin.adminData)
+  const admin=   typeof window !== 'undefined'&& localStorage.getItem('admin')
+  const router = useRouter();
+  if (!admin) {
+    typeof window !== 'undefined' && router.push({
+      pathname: '/login'
     })
-    return false;
-    }
-},[])
-   
+    return true;
+  }
 
- return (
+
+
+  return (
     <div>
-    
-     <Content/>
+      <Sidebar />
+      <Navbar />
+      {/* <Content /> */}
 
-    <style jsx>
+      <style jsx>
         {
-            `h4{
+          `h4{
                 
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 30px;
@@ -36,9 +36,9 @@ useEffect(()=>{
   
             }`
         }
-    </style>
+      </style>
 
-  
+
     </div>
   )
 }
