@@ -6,8 +6,7 @@ import { setAdminDetails } from '../store/actions/adminAction';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faUser,
-   faFolder,
-	faHeart,
+	faFolder,
 	faBriefcase,
 	faSignOutAlt,
 	faTachometerAlt,
@@ -18,18 +17,18 @@ import { useRouter } from 'next/router';
 
 const Sidebar = () => {
 
-	const router=useRouter()
-  const dispatch=useDispatch();
-	const handleLogout=()=>{
+	const router = useRouter()
+	const dispatch = useDispatch();
+	const handleLogout = () => {
 		localStorage.removeItem("admin")
 		dispatch(setAdminDetails(null))
-       router.push('/login')
-	
+		router.push('/login')
+
 	}
-    return (
+	return (
 		<div className={styles.navcontainer}>
 			<div className={styles.logo}>
-				<img style={{marginLeft:"20px"}} src="./logo.png"/>
+				<img style={{ marginLeft: "20px" }} src="./logo.png" />
 				<h2 >Tasker</h2>
 			</div>
 			<div className={styles.wrapper}>
@@ -37,36 +36,36 @@ const Sidebar = () => {
 					<li>
 						<FontAwesomeIcon
 							icon={faTachometerAlt}
-							style={{ width: "18px", cursor: "pointer" ,color:"white"}}
+							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
 						<Link href='/'><a>Dashboard</a></Link>
 					</li>
-					<li><FontAwesomeIcon 
-					icon={faFolder}
-							style={{ width: "18px", cursor: "pointer",color:"white" }}
-						/>{" "}
-		            <Link href='/category'><a>Category</a></Link>
+					<li><FontAwesomeIcon
+						icon={faFolder}
+						style={{ width: "18px", cursor: "pointer", color: "white" }}
+					/>{" "}
+						<Link href='/category'><a>Category</a></Link>
 
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faBriefcase}
-							style={{ width: "18px", cursor: "pointer",color:"white" }}
+							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
 						<a href="#">Job Providers</a>
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faUser}
-							style={{ width: "18px", cursor: "pointer" ,color:"white"}}
+							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
 						<a href="#">Taskers</a>
 					</li>
-					
+
 					<li onClick={handleLogout}>
 						<FontAwesomeIcon
 							icon={faSignOutAlt}
-							style={{ width: "18px", cursor: "pointer" ,color:"white"}}
+							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
 						<a href="">Logout</a>
 					</li>
