@@ -143,19 +143,23 @@ content of dashboard start */
 }
 .tabs{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width:250px;
+  width:220px;
   height:100px;
   background-color: #fff;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75);
+  /* box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75); */
+  /* border: 1px solid; */
+  padding: 10px;
+  /* box-shadow: 5px 10px #ffff; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 
 .categories>h2{
-  color: rgb(70, 105, 70);
+  color: black;
 }
 
 

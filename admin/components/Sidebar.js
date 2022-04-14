@@ -53,14 +53,15 @@ const Sidebar = () => {
 							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
 						<Link href='/jobproviders'><a>Job Providers</a></Link>
-						{/* <a href="#">Job Providers</a> */}
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faUser}
 							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
-						<a href="#">Taskers</a>
+						{/* <a href="#">Taskers</a> */}
+						<Link href='/taskers'><a>Taskers</a></Link>
+
 					</li>
 
 					<li onClick={handleLogout}>

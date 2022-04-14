@@ -23,7 +23,7 @@ const dashboard = () => {
     <div>
       <Sidebar />
       <Navbar />
-      {/* <Content /> */}
+      <Content />
 
       <style jsx>
         {
