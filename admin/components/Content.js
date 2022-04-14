@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import { Line } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
+import axios from '../axios';
 import Chart from 'chart.js/auto';
 
 //data for bar chart
@@ -45,47 +46,86 @@ const data = {
 	],
 };
 
-//doughnut chart data set
 
-const data1 = {
-	labels: ["Organic", "Social Media", "Websites"],
-	datasets: [
-		{
-			data: [300, 50, 100],
-			backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-			hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-		},
-	],
-};
+
 
 function Content() {
+	const [chartData, setChartData] = useState([])
+  const [userCount,setUserCount] = useState(0)
+  const [jobCount,setJobCount] = useState(0)
+  const [jobDone,setJobDone] = useState(0)
+  const [appliedJobCount,setAppliedJobCount] = useState(0)
+
+	useEffect(() => {
+		axios.get('/all/jobs/sts').then((resp) => {
+			setChartData(resp?.data);
+			console.log(resp?.data,'this is dataaaa resp iee')
+		 resp?.data.map((i)=>{
+			if(i._id=="Done"){
+					setJobDone(i.count)
+			}
+		})
+		}).catch(err => { console.log(err) })
+		//user count
+		axios.get('/users/count').then((resp) => {
+		 setUserCount(resp?.data) 
+	
+		}).catch(err => { console.log(err) })
+		//job count
+		axios.get('/jobs/count').then((resp) => {
+			setJobCount(resp?.data) 
+
+
+		}).catch(err => { console.log(err) })
+			//applied job count
+			axios.get('/users/count').then((resp) => {
+				setAppliedJobCount(resp?.data) 
+
+			}).catch(err => { console.log(err) })
+	}, [])
+	// fastify.get('/users/count',getUsersCountOption)
+	// fastify.get('/jobs/count',getJobCountOption)
+	// fastify.get('/applied/jobs/count',getAppliedJobCountOption)
+	//doughnut chart data set
+	const data1 = {
+		labels: chartData.map((i) => i?._id),
+		datasets: [
+			{
+				data: chartData.map((i) => i?.count),
+				backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+				hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+			},
+		],
+	};
+
+
 	return (
 		<div className={styles.contentcontainer}>
 			<div className={styles.contentwrapper}>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h3> Users</h3>
-						<p>1000</p>
+						<h5> Users</h5>
+						<p>TOTAL USERS: {userCount}</p>
 					</div>
 				</div>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h5>Providers</h5>
-						<p>1000</p>
+						<h5>JOBS</h5>
+						<p>TOTAL JOBS: {jobCount}</p>
 
 					</div>
 				</div>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h5>Taskers</h5>
-						<p>1000</p>
+						<h5>APPLIED JOBS</h5>
+						<p>TOTAL : {appliedJobCount}</p>
 
 					</div>
 				</div>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h2> Job Done</h2>
-						<p>1000</p>
+						<h5> Job Done</h5>
+						<p>TOTAL :{jobDone}</p>
 
 					</div>
 				</div>
@@ -94,12 +134,12 @@ function Content() {
 			<div className={styles.charts}>
 				<div className={styles.bar}>
 					<h2>Sales</h2>
-          {/* linechart */}
+					{/* linechart */}
 					<Line data={data} width={400} height={400} />
 				</div>
 				<div className={styles.circle}>
 					<h2>Customers Arrived</h2>
-          {/* dognut chart */}
+					{/* dognut chart */}
 					<Doughnut data={data1} width={400} height={400} />
 				</div>
 			</div>
