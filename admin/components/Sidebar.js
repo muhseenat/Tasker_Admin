@@ -52,7 +52,8 @@ const Sidebar = () => {
 							icon={faBriefcase}
 							style={{ width: "18px", cursor: "pointer", color: "white" }}
 						/>{" "}
-						<a href="#">Job Providers</a>
+						<Link href='/jobproviders'><a>Job Providers</a></Link>
+						{/* <a href="#">Job Providers</a> */}
 					</li>
 					<li>
 						<FontAwesomeIcon
