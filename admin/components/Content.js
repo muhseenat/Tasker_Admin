@@ -51,41 +51,54 @@ const data = {
 
 function Content() {
 	const [chartData, setChartData] = useState([])
-  const [userCount,setUserCount] = useState(0)
-  const [jobCount,setJobCount] = useState(0)
-  const [jobDone,setJobDone] = useState(0)
-  const [appliedJobCount,setAppliedJobCount] = useState(0)
+	const [linearChart, seLinearChart] = useState([])
+	const [userCount, setUserCount] = useState(0)
+	const [linearChartData, setLinearChartData] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+	const [jobCount, setJobCount] = useState(0)
+	const [jobDone, setJobDone] = useState(0)
+	const [appliedJobCount, setAppliedJobCount] = useState(0)
 
 	useEffect(() => {
 		axios.get('/all/jobs/sts').then((resp) => {
 			setChartData(resp?.data);
-			console.log(resp?.data,'this is dataaaa resp iee')
-		 resp?.data.map((i)=>{
-			if(i._id=="Done"){
+			console.log(resp?.data, 'this is dataaaa resp iee')
+			resp?.data.map((i) => {
+				if (i._id == "Done") {
 					setJobDone(i.count)
-			}
-		})
+				}
+			})
 		}).catch(err => { console.log(err) })
 		//user count
 		axios.get('/users/count').then((resp) => {
-		 setUserCount(resp?.data) 
-	
+			setUserCount(resp?.data)
+
 		}).catch(err => { console.log(err) })
 		//job count
 		axios.get('/jobs/count').then((resp) => {
-			setJobCount(resp?.data) 
+			setJobCount(resp?.data)
 
 
 		}).catch(err => { console.log(err) })
-			//applied job count
-			axios.get('/users/count').then((resp) => {
-				setAppliedJobCount(resp?.data) 
+		//applied job count
+		axios.get('/users/count').then((resp) => {
+			setAppliedJobCount(resp?.data)
 
-			}).catch(err => { console.log(err) })
+		}).catch(err => { console.log(err) })
+		//users by month
+		axios.get('/all/user/statics').then((resp) => {
+			console.log(resp.data, 'linear chart');
+			let sample=resp?.data||[]
+			setLinearChartData((prev)=>{
+				sample.forEach(element => {
+					prev[element._id-1]=element.total
+
+				});
+				return prev;
+			})
+
+		}).catch(err => console.log(err))
 	}, [])
-	// fastify.get('/users/count',getUsersCountOption)
-	// fastify.get('/jobs/count',getJobCountOption)
-	// fastify.get('/applied/jobs/count',getAppliedJobCountOption)
+
 	//doughnut chart data set
 	const data1 = {
 		labels: chartData.map((i) => i?._id),
@@ -97,14 +110,54 @@ function Content() {
 			},
 		],
 	};
-
+	//data for bar chart
+	const data = {
+		labels: [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December",
+		],
+		datasets: [
+			{
+				label: "Users/ month",
+				fill: true,
+				lineTension: 0.1,
+				backgroundColor: "rgba(75,192,192,0.4)",
+				borderColor: "rgba(75,192,192,1)",
+				borderCapStyle: "butt",
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: "miter",
+				pointBorderColor: "rgba(75,192,192,1)",
+				pointBackgroundColor: "#fff",
+				pointBorderWidth: 0,
+				pointHoverRadius: 0,
+				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+				pointHoverBorderColor: "rgba(220,220,220,1)",
+				pointHoverBorderWidth: 0,
+				pointRadius: 0,
+				pointHitRadius: 0,
+				data: linearChartData
+			},
+		],
+	};
+	console.log(linearChart, 'ithannaannn');
 
 	return (
 		<div className={styles.contentcontainer}>
 			<div className={styles.contentwrapper}>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h5> Users</h5>
+						<h5>USERS</h5>
 						<p>TOTAL USERS: {userCount}</p>
 					</div>
 				</div>
@@ -124,7 +177,7 @@ function Content() {
 				</div>
 				<div className={styles.tabs}>
 					<div className={styles.categories}>
-						<h5> Job Done</h5>
+						<h5>JOB DONE</h5>
 						<p>TOTAL :{jobDone}</p>
 
 					</div>
@@ -133,12 +186,12 @@ function Content() {
 			{/* chart started  */}
 			<div className={styles.charts}>
 				<div className={styles.bar}>
-					<h2>Sales</h2>
+					<h2>Users</h2>
 					{/* linechart */}
 					<Line data={data} width={400} height={400} />
 				</div>
 				<div className={styles.circle}>
-					<h2>Customers Arrived</h2>
+					<h2>Job Status</h2>
 					{/* dognut chart */}
 					<Doughnut data={data1} width={400} height={400} />
 				</div>

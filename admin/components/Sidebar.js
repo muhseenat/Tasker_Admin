@@ -36,13 +36,13 @@ const Sidebar = () => {
 					<li>
 						<FontAwesomeIcon
 							icon={faTachometerAlt}
-							style={{ width: "18px", cursor: "pointer", color: "white" }}
+							style={{ width: "18px", cursor: "pointer" }}
 						/>{" "}
 						<Link href='/'><a>Dashboard</a></Link>
 					</li>
 					<li><FontAwesomeIcon
 						icon={faFolder}
-						style={{ width: "18px", cursor: "pointer", color: "white" }}
+						style={{ width: "18px", cursor: "pointer",}}
 					/>{" "}
 						<Link href='/category'><a>Category</a></Link>
 
@@ -50,14 +50,14 @@ const Sidebar = () => {
 					<li>
 						<FontAwesomeIcon
 							icon={faBriefcase}
-							style={{ width: "18px", cursor: "pointer", color: "white" }}
+							style={{ width: "18px", cursor: "pointer",}}
 						/>{" "}
 						<Link href='/jobproviders'><a>Job Providers</a></Link>
 					</li>
 					<li>
 						<FontAwesomeIcon
 							icon={faUser}
-							style={{ width: "18px", cursor: "pointer", color: "white" }}
+							style={{ width: "18px", cursor: "pointer",}}
 						/>{" "}
 						{/* <a href="#">Taskers</a> */}
 						<Link href='/taskers'><a>Taskers</a></Link>
@@ -67,7 +67,7 @@ const Sidebar = () => {
 					<li onClick={handleLogout}>
 						<FontAwesomeIcon
 							icon={faSignOutAlt}
-							style={{ width: "18px", cursor: "pointer", color: "white" }}
+							style={{ width: "18px", cursor: "pointer", }}
 						/>{" "}
 						<a href="">Logout</a>
 					</li>

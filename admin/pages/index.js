@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 
 
 const dashboard = () => {
-  // const admin = useSelector(state => state.admin.adminData)
   const admin=   typeof window !== 'undefined'&& localStorage.getItem('admin')
   const router = useRouter();
   if (!admin) {
