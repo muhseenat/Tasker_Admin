@@ -3,13 +3,10 @@ import axios from '../axios'
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState, useMemo } from "react";
 import styles from "../styles/Home.module.css";
-
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faTimesCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 const TableHeader = dynamic(() => import('../components/DataTable/Header'))
 const Pagination = dynamic(() => import('../components/DataTable/Pagination'))
 const Search = dynamic(() => import('../components/DataTable/Search'))
@@ -31,23 +28,7 @@ const jobProviders = () => {
         { name: "Total Job", field: "count", sortable: true },
         { name: "Status", field: "status", sortable: false }
     ];
-    // const statusOption = ['Pending', 'Approved', 'Done']
-    //     let comments=[
-    //         {
-    //         name:"Muc",
-    //         email:"Muckts",
-    //         place:"ktd",
-    //         details:"gjgjgj",
-    //         status:"active"
-    //     },
-    //     {
-    //         name:"Muc",
-    //         email:"Muckts",
-    //         place:"ktd",
-    //         details:"gjgjgj",
-    //         status:"active"
-    //     },
-    // ]
+
     useEffect(() => {
 
         const getData = () => {
@@ -67,9 +48,11 @@ const jobProviders = () => {
     //CHANGE STATUS
     const changeStatus = (id) => {
         console.log(id);
-        const data={id,
-        provider:true }
-        axios.put('/providers/status/change/',data).then((resp) => {
+        const data = {
+            id,
+            provider: true
+        }
+        axios.put('/providers/status/change/', data).then((resp) => {
             setComments(resp?.data);
 
         }).catch(err => console.log(err));

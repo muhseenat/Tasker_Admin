@@ -38,16 +38,17 @@ const deleteCatg=(id)=>{
             <div className={styles.contentcontainer}>
                 <div className='container'>
                     <h3 className='text-center mt-5'>Add Category</h3>
-                    <div className="text-align-center mt-5">
-                        <div className="col-lg-4 ">
+                    <div className="d-flex justify-content-center mt-5">
+                        <div className="col-lg-4">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Enter Category" onChange={(e) => setCategory(e.target.value)} />
+                                <input type="text" className="form-control"value={category} placeholder="Enter Category" onChange={(e) => setCategory(e.target.value)} />
                                 <span className="input-group-btn">
                                     <button className="btn btn-primary" type="button" onClick={addCategory}>Submit</button>
                                 </span>
                             </div>
                         </div>
-                        <div className="row justify-content-center">
+                       </div>
+                        <div className="row justify-content-center mt-3">
                             <div className="col-auto">
                                 <table className="table w- ">
                                     <thead className="thead-light">
@@ -71,8 +72,9 @@ const deleteCatg=(id)=>{
                                         ))}
                                     </tbody>
                                 </table>
-                            </div></div>
-                    </div>
+                            </div>
+                            </div>
+                    
                 </div>
 
 

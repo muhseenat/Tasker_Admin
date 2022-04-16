@@ -1,9 +1,7 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import Content from '../components/Content';
-import { useSelector } from 'react-redux';
 
 
 const dashboard = () => {

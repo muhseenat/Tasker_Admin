@@ -2,8 +2,9 @@
   position: fixed;
   width:200px;
   height:100%;
-  background-color:#F7CCAC;
- color:#3A3845
+  background-color:#182848;
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+ color:#fff
 }
 
 .wrapper{
@@ -33,13 +34,13 @@
   list-style: none;
   font-size: 20px;
   text-decoration: none;
-  color:#3A3845;
+  color:#fff;
 }
 .wrapper>ul>li>a:active{
   color:  white;
 }
 .wrapper>ul>li>a{
-  color:#3A3845;
+  color:#fff;
 }
 .wrapper>ul>li>a:hover{
   color: white;
@@ -66,7 +67,7 @@
   gap:5px;
 }
 .wrapper>ul>li:hover{
-color:red;
+color:#fff;
 }
 .wrapper>ul>li>a{
   opacity: 0;
@@ -81,7 +82,8 @@ color:red;
   display: flex;
   flex-wrap: wrap;
   height:70px;
-  background-color:#3A3845;
+  background-color:#4b6cb7;
+  background: linear-gradient(90deg, #182848 0%, #182848 100%);
   margin-left:200px;
   /* z-index: -1; */
  
@@ -145,10 +147,7 @@ content of dashboard start */
   background-color: #fff;
   border-radius: 10px;
   cursor: pointer;
-  /* box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75); */
-  /* border: 1px solid; */
   padding: 10px;
-  /* box-shadow: 5px 10px #ffff; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
