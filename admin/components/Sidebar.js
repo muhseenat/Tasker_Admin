@@ -59,12 +59,11 @@ const Sidebar = () => {
 							icon={faUser}
 							style={{ width: "18px", cursor: "pointer",}}
 						/>{" "}
-						{/* <a href="#">Taskers</a> */}
 						<Link href='/taskers'><a>Taskers</a></Link>
 
 					</li>
 
-					<li onClick={handleLogout}>
+					<li onClick={()=>handleLogout()}>
 						<FontAwesomeIcon
 							icon={faSignOutAlt}
 							style={{ width: "18px", cursor: "pointer", }}
