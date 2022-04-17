@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {   faTimesCircle 
   } from "@fortawesome/free-solid-svg-icons";
-const category = () => {
+const Category = () => {
 
     const [allCategory, setAllCategory] = useState([]);
     const [category, setCategory] = useState("")
@@ -59,7 +59,7 @@ const deleteCatg=(id)=>{
                                     <tbody>
                                         {allCategory.map((catg, index) => (
 
-                                            <tr>
+                                            <tr key={index}>
                                                 <th scope="row">{index}</th>
                                                 <td>{catg.name}</td>
                                                 <td onClick={(e)=>{deleteCatg(catg._id)}}>
@@ -83,4 +83,4 @@ const deleteCatg=(id)=>{
     )
 }
 
-export default category
+export default Category

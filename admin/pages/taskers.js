@@ -12,7 +12,7 @@ const Pagination = dynamic(() => import('../components/DataTable/Pagination'))
 const Search = dynamic(() => import('../components/DataTable/Search'))
 
 
-const taskers = () => {
+const Taskers = () => {
     const [comments, setComments] = useState([]);
     const [totalItems, setTotalItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -160,4 +160,4 @@ const taskers = () => {
     )
 }
 
-export default taskers
+export default Taskers

@@ -12,7 +12,7 @@ const Pagination = dynamic(() => import('../components/DataTable/Pagination'))
 const Search = dynamic(() => import('../components/DataTable/Search'))
 
 
-const jobProviders = () => {
+const JobProviders = () => {
     const [comments, setComments] = useState([]);
     const [totalItems, setTotalItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -160,4 +160,4 @@ const jobProviders = () => {
     )
 }
 
-export default jobProviders 
+export default JobProviders 

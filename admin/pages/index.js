@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import Content from '../components/Content';
 
 
-const dashboard = () => {
+const Dashboard = () => {
   const admin=   typeof window !== 'undefined'&& localStorage.getItem('admin')
   const router = useRouter();
   if (!admin) {
@@ -41,4 +41,4 @@ const dashboard = () => {
 }
 
 
-export default dashboard
+export default Dashboard
