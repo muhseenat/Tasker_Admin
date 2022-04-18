@@ -34,7 +34,6 @@ export default function Home() {
     const data = { email, password }
     try {
       const res = await axios.post('/login', data)
-      console.log(res, 'it is resssss');
       if (res) {
         localStorage.setItem('admin', JSON.stringify(res.data))
         dispatch(setAdminDetails(res.data))

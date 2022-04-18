@@ -5,6 +5,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import styles from "../styles/Home.module.css";
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
+import swal from 'sweetalert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 const TableHeader = dynamic(() => import('../components/DataTable/Header'))
@@ -34,7 +35,6 @@ const Taskers = () => {
         const getData = () => {
 
             axios.get(`/taskers`).then((resp) => {
-                console.log(resp?.data);
                 setComments(resp?.data);
 
             }).catch(err => console.log(err))
@@ -43,19 +43,33 @@ const Taskers = () => {
 
         getData();
     }, []);
-    console.log(comments, 'this is comments');
 
     //CHANGE STATUS
     const changeStatus = (id) => {
-        console.log(id);
         const data = {
             id,
             tasker: true
         }
-        axios.put('/providers/status/change/', data).then((resp) => {
-            setComments(resp?.data);
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                axios.put('/providers/status/change/', data).then((resp) => {
+                    setComments(resp?.data);
+                    swal("Changes updated successfully", {
+                        icon: "success",
+                      });
+                    }).catch(err => console.log(err))
+       
+                } else {
+                    swal("There is no change occur");
+                  }
+                });
 
-        }).catch(err => console.log(err));
 
 
     }

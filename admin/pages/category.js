@@ -6,31 +6,68 @@ import Navbar from '../components/Navbar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {   faTimesCircle 
   } from "@fortawesome/free-solid-svg-icons";
+import swal from 'sweetalert';
+
 const Category = () => {
 
     const [allCategory, setAllCategory] = useState([]);
     const [category, setCategory] = useState("")
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         axios.get('/get/category').then((resp) => {
-            console.log(resp);
             setAllCategory(resp?.data)
         }).catch(err => { console.log(err) })
     }, [])
+    const handleCategory=(e)=>{
+        setCategory(e.target.value)
+        setError(false)
+    }
     const addCategory = () => {
-        axios.post('/add/category', category, { headers: { "Content-Type": 'application/json' } })
+        if(category==""){
+            setError(true)
+        }
+        else{
+            axios.post('/add/category', category, { headers: { "Content-Type": 'application/json' } })
             .then((resp) => {
-                console.log(resp.data);
                 setAllCategory(resp?.data)
                 setCategory("");
+                setError(false)
+                swal({
+                    title: "Success",
+                    text: "Category added successfully",
+                    icon: "success",
+                  });
             }).catch(err => console.log(err))
+        }
+        
     }
 const deleteCatg=(id)=>{
-      axios.delete(`/delete/category/${id}`).then((resp)=>{
-        console.log(resp.data);
-        setAllCategory(resp?.data)
-    }).catch(err => console.log(err))
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            axios.delete(`/delete/category/${id}`).then((resp)=>{
+                setAllCategory(resp?.data)
+            swal("Poof! Category has been deleted!", {
+              icon: "success",
+            });
+          }).catch(err => console.log(err))
+         
+        } else {
+          swal("Category is still there");
+        }
+      });
+    
 }
+
+
+
     return (
         <>
             <Sidebar />
@@ -41,11 +78,13 @@ const deleteCatg=(id)=>{
                     <div className="d-flex justify-content-center mt-5">
                         <div className="col-lg-4">
                             <div className="input-group">
-                                <input type="text" className="form-control"value={category} placeholder="Enter Category" onChange={(e) => setCategory(e.target.value)} />
+                                <input type="text" className="form-control"value={category} placeholder="Enter Category" onChange={(e) => handleCategory(e)} />
                                 <span className="input-group-btn">
                                     <button className="btn btn-primary" type="button" onClick={addCategory}>Submit</button>
                                 </span>
                             </div>
+                            {error&&<p style={{color:"red"}}>This field is required</p>}
+
                         </div>
                        </div>
                         <div className="row justify-content-center mt-3">

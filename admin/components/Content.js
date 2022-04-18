@@ -61,7 +61,6 @@ function Content() {
 	useEffect(() => {
 		axios.get('/all/jobs/sts').then((resp) => {
 			setChartData(resp?.data);
-			console.log(resp?.data, 'this is dataaaa resp iee')
 			resp?.data.map((i) => {
 				if (i._id == "Done") {
 					setJobDone(i.count)
@@ -86,7 +85,6 @@ function Content() {
 		}).catch(err => { console.log(err) })
 		//users by month
 		axios.get('/all/user/statics').then((resp) => {
-			console.log(resp.data, 'linear chart');
 			let sample=resp?.data||[]
 			setLinearChartData((prev)=>{
 				sample.forEach(element => {
@@ -150,7 +148,6 @@ function Content() {
 			},
 		],
 	};
-	console.log(linearChart, 'ithannaannn');
 
 	return (
 		<div className={styles.contentcontainer}>
