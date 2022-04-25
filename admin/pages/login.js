@@ -8,7 +8,6 @@ import axios from '../axios'
 
 export default function Home() {
 
-  // const admin = useSelector(state => state.admin.adminData)
   const admin=   typeof window !== 'undefined'&& localStorage.getItem('admin')
 
 
